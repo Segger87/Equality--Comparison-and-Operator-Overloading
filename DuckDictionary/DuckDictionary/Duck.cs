@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace DuckDictionary
 {
-	public class Duck
+	public class Duck : IComparable<Duck>
 	{
 		public string Name { get; }
 		public string Type { get; }
@@ -20,9 +20,14 @@ namespace DuckDictionary
 			WeightInGrams = weightInGrams;
 			AgeInMonths = ageInMonths;
 		}
+
+		public int CompareTo(Duck other)
+		{
+			return AgeInMonths.CompareTo(other.AgeInMonths);
+		}
 		public override string ToString()
 		{
-			return $"Name = {Name}, Type = {Type} Weight in Grams = {WeightInGrams} Age in Months = {AgeInMonths}";
+			return $"Name: {Name}, Type: {Type}, Weight in Grams: {WeightInGrams}, Age in Months: {AgeInMonths}";
 		}
 	}
 
