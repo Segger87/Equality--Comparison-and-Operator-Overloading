@@ -72,11 +72,10 @@ namespace DuckDictionary
 				Console.WriteLine(duck);
 			}
 
-			//checking overridden Equals
+			//checking Equals Method works correctly
 			Console.WriteLine(barry.Equals(barriette));
 			Console.WriteLine(beastModeBarry.Equals(beastModeBarry));
 			Console.WriteLine(barry.Equals(barrietalina));
-
 			Console.ReadLine();
 		}
 	}

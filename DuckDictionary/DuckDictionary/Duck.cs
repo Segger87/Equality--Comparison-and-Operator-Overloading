@@ -1,12 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace DuckDictionary
+﻿namespace DuckDictionary
 {
-	public class Duck /*: IComparable<Duck>*/
+	public class Duck
 	{
 		public string Name { get; }
 		public string Type { get; }
