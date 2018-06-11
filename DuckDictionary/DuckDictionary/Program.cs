@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace DuckDictionary
 {
@@ -13,18 +14,19 @@ namespace DuckDictionary
 			var barrietalina = new Duck("Barietalina", "Mallard", 150, 17);
 
 			var duckDict = new Dictionary<Duck, int>();
-			var duckList = new List<Duck>();
-
-			duckList.Add(barry);
-			duckList.Add(beastModeBarry);
-			duckList.Add(barriette);
-			duckList.Add(barrietalina);
+			var duckList = new List<Duck>
+			{
+				barry,
+				beastModeBarry,
+				barriette,
+				barrietalina
+			};
 
 			//unordered ducklist 
-			foreach (var item in duckList)
+			foreach (var duck in duckList)
 			{
 				Console.ForegroundColor = ConsoleColor.Red;
-				Console.WriteLine(item.ToString());
+				Console.WriteLine(duck.ToString());
 			}
 
 			//SortByAge class has a method that sorts the ducks by their age - youngest to oldest( can use .Reverse to order from oldest to youngest)
@@ -33,7 +35,7 @@ namespace DuckDictionary
 			
 			Console.ResetColor();
 			Console.WriteLine("========================================");
-			Console.WriteLine("Ordered By Age");
+			Console.WriteLine("List Of Ducks Ordered By Age");
 			Console.WriteLine("========================================");
 
 			//displays a list of ducks ordered by age from oldest to youngest
@@ -45,9 +47,10 @@ namespace DuckDictionary
 
 			SortByWeight sortByWeight = new SortByWeight();
 			duckList.Sort(sortByWeight);
+
 			Console.ResetColor();
 			Console.WriteLine("========================================");
-			Console.WriteLine("Ordered By Weight");
+			Console.WriteLine("List of Ducks Ordered By Weight");
 			Console.WriteLine("========================================");
 
 			foreach (var duck in duckList)
@@ -56,17 +59,24 @@ namespace DuckDictionary
 				Console.WriteLine(duck.ToString());
 			}
 
-			duckDict.Add(barry, barry.WeightInGrams);
-			duckDict.Add(beastModeBarry, beastModeBarry.WeightInGrams);
-			duckDict.Add(barriette, barriette.WeightInGrams);
-			duckDict.Add(barrietalina, barrietalina.WeightInGrams);
+			duckDict = duckList.ToDictionary(d => d, d => d.Name.GetHashCode());
 
+			Console.ResetColor();
+			Console.WriteLine("========================================");
+			Console.WriteLine("Dictionary of Ducks Ordered By Name");
+			Console.WriteLine("========================================");
+			
+			//Dictionary of ducks
+			foreach (var duck in duckDict.OrderBy(d => d.Value))
+			{
+				Console.WriteLine(duck);
+			}
 
-			//duckDict.Sort(sortByAge);
-			//foreach (var duck in duckDict)
-			//{
-			//	Console.WriteLine(duck.ToString());
-			//}
+			//checking overridden Equals
+			Console.WriteLine(barry.Equals(barriette));
+			Console.WriteLine(beastModeBarry.Equals(beastModeBarry));
+			Console.WriteLine(barry.Equals(barrietalina));
+
 			Console.ReadLine();
 		}
 	}

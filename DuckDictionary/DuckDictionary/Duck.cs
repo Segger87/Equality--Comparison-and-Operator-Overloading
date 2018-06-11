@@ -21,10 +21,26 @@ namespace DuckDictionary
 			AgeInMonths = ageInMonths;
 		}
 
-		//public int CompareTo(Duck other)
-		//{
-		//	return AgeInMonths.CompareTo(other.AgeInMonths);
-		//}
+		public override bool Equals(object obj)
+		{
+			if (obj is null) return false;
+			if (ReferenceEquals(this, obj)) return true;
+			if (obj.GetType() != GetType()) return false;
+			return Equals((Duck)obj);
+		}
+
+		public bool Equals(Duck other)
+		{
+			return Name == other.Name;
+		}
+
+		public override int GetHashCode()
+		{
+			int hash = Name.GetHashCode();
+			hash = (hash * 31) + AgeInMonths.GetHashCode();
+			return hash;
+		}
+
 		public override string ToString()
 		{
 			return $"Name: {Name}, Type: {Type}, Weight in Grams: {WeightInGrams}, Age in Months: {AgeInMonths}";
