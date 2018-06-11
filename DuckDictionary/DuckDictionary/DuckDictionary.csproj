@@ -45,6 +45,8 @@
     <Compile Include="Duck.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="TypesOfSorting\SortByAge.cs" />
+    <Compile Include="TypesOfSorting\SortByWeight.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

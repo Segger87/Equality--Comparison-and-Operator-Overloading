@@ -1,8 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace DuckDictionary
 {
@@ -30,10 +27,10 @@ namespace DuckDictionary
 				Console.WriteLine(item.ToString());
 			}
 
-			//Duck class implements Icomparable interface which has a compareTo method which compares on the ducks age
-			duckList.Sort();
-			duckList.Reverse();
-
+			//SortByAge class has a method that sorts the ducks by their age - youngest to oldest( can use .Reverse to order from oldest to youngest)
+			SortByAge sortByAge = new SortByAge();
+			duckList.Sort(sortByAge);
+			
 			Console.ResetColor();
 			Console.WriteLine("========================================");
 			Console.WriteLine("Ordered By Age");
@@ -46,11 +43,26 @@ namespace DuckDictionary
 				Console.WriteLine(duck.ToString());
 			}
 
+			SortByWeight sortByWeight = new SortByWeight();
+			duckList.Sort(sortByWeight);
+			Console.ResetColor();
+			Console.WriteLine("========================================");
+			Console.WriteLine("Ordered By Weight");
+			Console.WriteLine("========================================");
+
+			foreach (var duck in duckList)
+			{
+				Console.ForegroundColor = ConsoleColor.DarkYellow;
+				Console.WriteLine(duck.ToString());
+			}
+
 			duckDict.Add(barry, barry.WeightInGrams);
 			duckDict.Add(beastModeBarry, beastModeBarry.WeightInGrams);
 			duckDict.Add(barriette, barriette.WeightInGrams);
 			duckDict.Add(barrietalina, barrietalina.WeightInGrams);
 
+
+			//duckDict.Sort(sortByAge);
 			//foreach (var duck in duckDict)
 			//{
 			//	Console.WriteLine(duck.ToString());
