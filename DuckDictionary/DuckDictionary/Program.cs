@@ -12,6 +12,7 @@ namespace DuckDictionary
 			var beastModeBarry = new Duck("Beastmode Barry", "Pond Duck on Roids", 9000, 12);
 			var barriette = new Duck("Barriette", "Mallard", 99, 30);
 			var barrietalina = new Duck("Barietalina", "Mallard", 150, 17);
+			var barrietalina2 = new Duck("Barietalina", "Mallerd", 150, 17);
 
 			var duckDict = new Dictionary<Duck, int>();
 			var duckList = new List<Duck>
@@ -67,7 +68,7 @@ namespace DuckDictionary
 			Console.WriteLine("========================================");
 			
 			//Dictionary of ducks
-			foreach (var duck in duckDict.OrderBy(d => d.Value))
+			foreach (var duck in duckDict.Keys)
 			{
 				Console.WriteLine(duck);
 			}
@@ -75,7 +76,7 @@ namespace DuckDictionary
 			//checking Equals Method works correctly
 			Console.WriteLine(barry.Equals(barriette));
 			Console.WriteLine(beastModeBarry.Equals(beastModeBarry));
-			Console.WriteLine(barry.Equals(barrietalina));
+			Console.WriteLine(barrietalina2.Equals(barrietalina));
 			Console.ReadLine();
 		}
 	}

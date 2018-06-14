@@ -25,7 +25,10 @@
 
 		public bool Equals(Duck other)
 		{
-			return Name == other.Name;
+			return Name == other.Name &&
+				Type == other.Type &&
+				WeightInGrams == other.WeightInGrams &&
+				AgeInMonths == other.AgeInMonths;
 		}
 
 		public override int GetHashCode()
